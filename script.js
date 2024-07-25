@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     loadPrompts();
+    const promptInput = document.getElementById('promptInput');
+    promptInput.addEventListener('focus', adjustForKeyboard);
+    promptInput.addEventListener('blur', resetLayout);
 });
 
 function addPrompt() {
@@ -60,11 +63,23 @@ function loadPrompts() {
 
 function clearPrompts() {
     if (confirm("Are you sure you want to clear all prompts?")) {
-        if (confirm("Are you really really sure?")) {
-            if (confirm("Are you 200% completely sure you want to clear ALL of your prompts?")) {
-                localStorage.removeItem('prompts');
-                document.getElementById('prompts').innerHTML = "";
-            }
-        }
+        localStorage.removeItem('prompts');
+        document.getElementById('prompts').innerHTML = "";
+    }
+}
+
+function adjustForKeyboard() {
+    if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)) {
+        const chatbox = document.getElementById('chatbox');
+        chatbox.style.position = 'absolute';
+        chatbox.style.bottom = '250px';
+    }
+}
+
+function resetLayout() {
+    if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)) {
+        const chatbox = document.getElementById('chatbox');
+        chatbox.style.position = 'static';
+        chatbox.style.bottom = 'initial';
     }
 }
