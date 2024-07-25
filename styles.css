@@ -98,19 +98,35 @@ body {
 
 /* Responsive Styles */
 @media (max-width: 600px) {
-    .input-area button {
-        padding: 10px;
+    .chatbox {
+        width: 95%;
+        height: 95%;
+    }
+
+    .prompts {
+        padding: 25px;
+    }
+
+    .prompt {
+        padding: 15px;
+        font-size: 1.1em;
     }
 
     .input-area input {
-        margin-right: 5px;
+        padding: 15px;
+        margin-right: 10px;
+    }
+
+    .input-area button {
+        padding: 15px 25px;
+        font-size: 1.1em;
     }
 
     .footer {
-        padding: 5px;
+        padding: 10px;
     }
 
     .footer button {
-        font-size: 0.8em;
+        font-size: 1em;
     }
 }
